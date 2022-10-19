@@ -39,12 +39,22 @@ end
 
 # Let's write a method that will solve Gamma Function recursively. The Gamma Function is defined Γ(n) = (n-1)!.
 
+def gamma_fnc(n) #4 #3 #2
+    return nil if n == 0
+    return 1 if n == 1
 
-#   # Test Cases
-#   gamma_fnc(0)  # => returns nil
-#   gamma_fnc(1)  # => returns 1
-#   gamma_fnc(4)  # => returns 6
-#   gamma_fnc(8)  # => returns 5040
+    # (4-1)! => 3! => 3 * 2! 
+    (n-1) * gamma_fnc(n-1)
+     # 3 * line below       
+     # 2 * line below
+     # 1 * 1
+end
+
+  # Test Cases
+# p  gamma_fnc(0)  # => returns nil
+# p  gamma_fnc(1)  # => returns 1
+# p  gamma_fnc(4)  # => returns 6
+# p  gamma_fnc(8)  # => returns 5040
 
 
 # Exercise 4 - Ice Cream Shop
@@ -63,11 +73,11 @@ def ice_cream_shop(flavors, favorite)
 end
 
 # Test Cases
-p ice_cream_shop(['vanilla', 'strawberry'], 'blue moon')  # => returns false
-p ice_cream_shop(['pistachio', 'green tea', 'chocolate', 'mint chip'], 'green tea')  # => returns true
-p ice_cream_shop(['cookies n cream', 'blue moon', 'superman', 'honey lavender', 'sea salt caramel'], 'pistachio')  # => returns false
-ice_cream_shop(['moose tracks'], 'moose tracks')  # => returns true
-p ice_cream_shop([], 'honey lavender')  # => returns false
+# p ice_cream_shop(['vanilla', 'strawberry'], 'blue moon')  # => returns false
+# p ice_cream_shop(['pistachio', 'green tea', 'chocolate', 'mint chip'], 'green tea')  # => returns true
+# p ice_cream_shop(['cookies n cream', 'blue moon', 'superman', 'honey lavender', 'sea salt caramel'], 'pistachio')  # => returns false
+# ice_cream_shop(['moose tracks'], 'moose tracks')  # => returns true
+# p ice_cream_shop([], 'honey lavender')  # => returns false
 
 
 
