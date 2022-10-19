@@ -34,3 +34,34 @@ end
 # p  add_numbers([-80,34,7]) # => returns -39
 # p  add_numbers([]) # => returns nil
 
+
+# Exercise 3 - Gamma Function
+
+# Let's write a method that will solve Gamma Function recursively. The Gamma Function is defined Γ(n) = (n-1)!.
+
+
+#   # Test Cases
+#   gamma_fnc(0)  # => returns nil
+#   gamma_fnc(1)  # => returns 1
+#   gamma_fnc(4)  # => returns 6
+#   gamma_fnc(8)  # => returns 5040
+
+
+# Exercise 5 - Reverse
+
+# Write a function reverse(string) that takes in a string and returns it reversed.
+
+def reverse(str)
+    return str if str.length <= 1
+
+    str[-1] + reverse(str[0..-2])
+end
+
+# Test Cases
+# p reverse("house") # => "esuoh"
+# p reverse("dog") # => "god"
+# p reverse("atom") # => "mota"
+# p reverse("q") # => "q"
+# p reverse("id") # => "di"
+# p reverse("") # => ""
+
