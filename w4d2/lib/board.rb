@@ -31,6 +31,7 @@ class Board
     #removing stones from the cup
     stones = @cups[start_pos]
     @cups[start_pos] = []
+
   end
 
   def next_turn(ending_cup_idx)
@@ -46,8 +47,18 @@ class Board
   end
 
   def one_side_empty?
+    @cups[1..6].all? {|cup| cup.empty?} ||
+    @cups[7..12].all? {|cup| cup.empty?}
   end
 
   def winner
+    player1_count = @cups[6].count
+    player2_count = @cups[13].count
+
+    if player1_count == player2_count
+      :draw
+    else
+      player1_count > player2_count ? @name1 : @name2
+    end
   end
 end
