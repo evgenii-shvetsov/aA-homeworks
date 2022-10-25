@@ -32,6 +32,23 @@ class Board
     stones = @cups[start_pos]
     @cups[start_pos] = []
 
+    #placing stones in cups
+    cup_index = start_pos
+    until stones.empty?
+      cup_index += 1
+      cup_index = 0 if cup_index > 13
+      #placing stones in the current player's cups
+      if cup_index == 6
+        @cups[6] << stones.pop if current_player_name == @name1
+      elsif cup_index == 13
+        @cups[13] << stones.pop if current_player_name == @name2
+      else
+        @cups[cup_index] << stones.pop
+      end
+    end
+
+    render
+    next_turn(cup_index)
   end
 
   def next_turn(ending_cup_idx)
