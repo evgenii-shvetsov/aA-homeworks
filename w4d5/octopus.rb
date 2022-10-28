@@ -79,3 +79,7 @@ tiles_hash = {
     "left"=>6,  
     "left-up"=>7
 }
+
+def fast_dance(direction,tiles_hash)
+    tiles_hash[direction]
+end
