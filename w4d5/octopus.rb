@@ -6,15 +6,15 @@
 arr = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh']
 
 def sluggish_o(arr)
-    biggest_length = arr[0].length
-    longest_word = arr[0]
-    arr.each do |word|
-        if word.length > biggest_length
-            biggest_length = word.length
-            longest_word = word
-        end
+    arr.each_with_index do |word_1, i|
+        biggest_length = true
     end
-    longest_word
+
+    arr.each_with_index do |word_2, j|
+        next if i == j
+        biggest_length = false if word_2.length > word_1.length
+    end
+    return word_1 if biggest_length
 end
 # p sluggish_o(arr)
 
@@ -39,5 +39,43 @@ end
 # p bubble_sort(arr)
 
 
-                        # Clever Octopus
+                # Clever Octopus
 # Find the longest fish in O(n) time. The octopus can hold on to the longest fish that you have found so far while stepping through the array only once.
+
+def clever_o(arr)
+    biggest_length = arr[0].length
+    longest_word = arr[0]
+    arr.each do |word|
+        if word.length > biggest_length
+            biggest_length = word.length
+            longest_word = word
+        end
+    end
+    longest_word
+end
+# p clever_o(arr)
+# p sluggish_o(arr)
+
+
+#Dancing Octopus
+
+tiles_array = ["up", "right-up", "right", "right-down", "down", "left-down", "left",  "left-up" ]
+
+def slow_dance(direction, tiles_array)
+    tiles_array.each_with_index do |tile, i|
+        return i if tile == direction
+    end
+end
+
+
+
+tiles_hash = {
+    "up"=>0,
+    "right-up"=>1,
+    "right"=>2,
+    "right-down"=>3,
+    "down"=>4,
+    "left-down"=>5,
+    "left"=>6,  
+    "left-up"=>7
+}
