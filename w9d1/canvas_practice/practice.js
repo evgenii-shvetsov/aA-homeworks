@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function(){
     canvas.height = 500;
 
     const ctx = canvas.getContext("2d");
-
+    
+    ctx.fillStyle = "red"; 
+    ctx.fillRect(50,50,200,150);
+    
 
 });
