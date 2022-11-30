@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function(){
     ctx.stroke();
     ctx.fillStyle = "blue";
     ctx.fill();
+    // ctx.closePath();
 
     //Phase 4
     //drawing a triangle
