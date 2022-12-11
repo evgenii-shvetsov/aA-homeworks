@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 import { useHistory } from 'react-router-dom';
 import { colors, codes } from './data';
@@ -6,7 +6,9 @@ import { colors, codes } from './data';
 const Cat = () => {
   const history = useHistory();
   const [colorNum, setColorNum] = useState(0);
-  const [statusChange, setStatusChange] = useState('418');
+  const [statusChange, setStatusChange] = useState(
+    localStorage.getItem('catStatus') || '418'
+  );
   const [status, setStatus] = useState('');
 
   const handleSubmit = e => {
@@ -14,6 +16,33 @@ const Cat = () => {
     setStatusChange(status);
     setStatus('');
   };
+
+  useEffect(()=>{
+    const colorInterval = setInterval(()=>{
+      setColorNum(prevNum => ++prevNum % colors.length)
+    }, 5000)
+
+    return ()=>clearInterval(colorInterval);
+  },[]);
+
+  useEffect(()=>{
+    localStorage.setItem('catStatus', statusChange)
+  },[statusChange])
+
+  useEffect(() => {
+    if (statusChange === '') {
+      alert('Please Enter A Code');
+      setStatusChange('404');
+      return;
+    }
+    if (!codes.includes(Number(statusChange))) {
+      alert(
+        `Code ${statusChange} might exist, but it is not a proper Cat Status code.`
+      );
+      setStatusChange('404');
+    }
+  }, [statusChange]);
+  
 
   return (
     <div
