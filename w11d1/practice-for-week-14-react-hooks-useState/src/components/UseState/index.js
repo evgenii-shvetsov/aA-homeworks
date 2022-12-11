@@ -11,8 +11,8 @@ const UseState = () => {
       <button onClick={() => setTheme("dark")}>Dark</button>
       <button onClick={() => setTheme("light")}>Light</button>
       <h1>{count}</h1>
-      <button onClick={()=>setCount(count + 1)}>Increment</button>
-      <button onClick={()=>setCount(count - 1)}>Decrement</button>
+      <button onClick={()=>setCount((prevCount) => prevCount + 1)}>Increment</button>
+      <button onClick={()=>setCount((prevCount) => prevCount - 1)}>Decrement</button>
     </div>
   );
 };
