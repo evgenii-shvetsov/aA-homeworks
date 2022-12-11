@@ -33,5 +33,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "In this practice you will learn to use one of the most basic hooks, the [`useState`] hook. You will use the `useState` hook to change a background theme from light to dark, as well as to increment and decrement a number.",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
