@@ -7,6 +7,7 @@ const ContactUs = () => {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [comments, setComments] = useState('');
+    const [phoneType, setPhoneType] = useState('');
 
     const onSubmit = (e) =>{
         e.preventDefault();
@@ -16,6 +17,7 @@ const ContactUs = () => {
             email,
             phone,
             comments,
+            phoneType,
             submittedOn: new Date()
           };
 
@@ -25,6 +27,7 @@ const ContactUs = () => {
         setEmail('');
         setPhone('');
         setComments('');
+        setPhoneType('');
     }
 
   return (
@@ -43,7 +46,16 @@ const ContactUs = () => {
 
             <div>
                 <label htmlFor="phone">Phone:</label>
-                <input type="phone" id='phone' value={phone} onChange={e=>setPhone(e.target.value)}/>
+                <input name='phone' type="text" id='phone' value={phone} onChange={e=>setPhone(e.target.value) }/>
+                
+                <select name="phoneType" value={phoneType} onChange={e=>setPhoneType(e.target.value)}>
+                    <option value="" disabled>
+                        Select a phone type...
+                    </option>
+                    <option>Home</option>
+                    <option>Work</option>
+                    <option>Mobile</option>
+                </select>
             </div>
 
             <div>
