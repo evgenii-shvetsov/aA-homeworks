@@ -8,8 +8,8 @@ const UseState = () => {
   return (
     <div className={theme}>
       <h1>UseState Component</h1>
-      <button onClick={() => setTheme("dark")}>Dark</button>
-      <button onClick={() => setTheme("light")}>Light</button>
+      <button onClick={() => setTheme(theme == "dark" ? "light": "dark")}>Toggle theme</button>
+      
       <h1>{count}</h1>
       <button onClick={()=>setCount((prevCount) => prevCount + 1)}>Increment</button>
       <button onClick={()=>setCount((prevCount) => prevCount - 1)}>Decrement</button>
