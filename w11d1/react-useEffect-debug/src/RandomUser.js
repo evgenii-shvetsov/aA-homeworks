@@ -1,28 +1,31 @@
 import { useState, useEffect } from 'react';
-
+import { useHistory } from 'react-router-dom';
 import User from './User';
 
-const colors = ['#0c9bbd', 'red', 'orange', 'green'];
+
 
 const RandomUserTwo = () => {
+  const history = useHistory();
   const [num, setNum] = useState(0);
   const [searchChange, setSearchChange] = useState('');
   const [searchWord, setSearchWord] = useState(
-    localStorage.setItem('user') || 'foobar'
+    localStorage.getItem('user') || 'foobar'
   );
   
   const [data, setData] = useState([]);
+  const colors = ['#0c9bbd', 'red', 'orange', 'green'];
 
   useEffect(() => {
-    const fetchUser = () => {
+    const fetchUser = async () => {
       const res = await fetch(`https://randomuser.me/api/?seed=${searchWord}`);
       const data = await res.json();
       setData(data.results);
     };
-  }, []);
+    fetchUser();
+  }, [searchWord]);
 
   useEffect(() => {
-    localStorage.getItem('user', searchWord);
+    localStorage.setItem('user', searchWord);
   }, [searchWord]);
 
   useEffect(() => {
@@ -30,6 +33,8 @@ const RandomUserTwo = () => {
       console.log('i am running');
       setNum((prevNum) => (prevNum === 3 ? 0 : prevNum + 1));
     }, 7000);
+
+    return ()=>clearInterval(colorInterval);
   }, []);
 
   return (
@@ -40,6 +45,7 @@ const RandomUserTwo = () => {
       }}
       className='container'
     >
+      <button onClick={() => history.push('/')}>Home</button>
       <div className='person'>
         {data?.map((data) => (
           <User key={data.id.value} data={data} />
