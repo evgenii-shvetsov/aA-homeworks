@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
 import articleReducer from './articleReducer';
 
 // `combineReducers` combines all the reducer functions into one big reducer
@@ -30,7 +31,9 @@ if (process.env.NODE_ENV !== 'production') {
   const composeEnhancers =
     typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true }) : compose;
-  enhancer = composeEnhancers(applyMiddleware(logger));
+  enhancer = composeEnhancers(applyMiddleware(thunk, logger));
+} else {
+  enhancer = applyMiddleware(thunk);
 }
 
 // `createStore` creates a store object literal {} 
